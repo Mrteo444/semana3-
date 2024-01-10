@@ -1,4 +1,4 @@
-import { Alert, Button, StyleSheet, Text, View } from 'react-native'
+import { ImageBackground,Alert, Button, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 
@@ -30,19 +30,29 @@ function login(){
     console.log(errorCode);
     console.log(errorMessage)
 
-    if ( errorCode === 'auth/invalid-credential'){
-      Alert.alert('Error', 'Las credenciales son incorrectas')
-    }else if ( errorCode === 'auth/missing-password'){
-      Alert.alert('Error', 'La contrasenia no se ha enviado')
-    }else{
-      Alert.alert(errorCode, errorMessage)
+    switch (errorCode) {
+      case "auth/invalid-credential":
+        Alert.alert("Error ","CORREO incorrectas")
+        break;
+      case "auth/wrong-password":
+        Alert.alert("Error ","Contraseña perida")
+        break;
+      default:
+        Alert.alert("ERROR")
     }
+
+    
 
   });
 }
 
   return (
-    <View>
+    <ImageBackground
+
+      source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKalSixOk2ePgoNBqLbKjmfF8xwuZlLc6U0Q&usqp=CAU' }}
+      style={styles.container}
+    >
+    
       <Text style={{fontSize:30}}>Login</Text>
       <TextInput 
         placeholder='Ingrese correo'
@@ -60,7 +70,7 @@ function login(){
       <Button title='Ingresar' onPress={()=> login()}/>
 
       <Text onPress={()=> navigation.navigate('Registro')}> 👉 Regístrate aquí 👈</Text>
-    </View>
+      </ImageBackground>
   )
 }
 

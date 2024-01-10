@@ -37,7 +37,7 @@ function MyDrawer() {
 export default function MainNavigator(){
     return(
         <NavigationContainer>
-            <MyStack/>
+            <MyDrawer/>
         </NavigationContainer>
     )
 }
